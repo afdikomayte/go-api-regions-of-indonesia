@@ -1,0 +1,35 @@
+@startuml
+
+Entity province{
+    *id : char(2) <<PK>>
+   *name : varchar(255)
+}
+
+Entity regencies{
+    *id : char(5) <<PK>>
+    *name : varchar(255)
+    --
+    *province_id : char(2) <<FK>>
+}
+
+Entity districts{
+    *id : char(8) <<PK>
+    *name : varchar(255)
+    --
+    *regency_id : char(5) <<FK>>
+}
+
+Entity villages{
+    *id : char(15) <<PK>>
+    *name : varchar(255)
+    --
+    *district_id : char(8) <<FK>>
+}
+
+province ||--|{ regencies
+regencies ||--|{ districts
+districts ||--|{ villages
+
+
+
+@enduml
